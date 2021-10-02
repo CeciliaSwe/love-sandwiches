@@ -41,7 +41,6 @@ def validate_data(values):
     Raises value error if integers cannot be converted,
     or if there are not exactly 6 values.
     """
-    print(values)
     try:
         [int(value) for value in values]
         if len(values) != 6:
@@ -55,7 +54,16 @@ def validate_data(values):
     return True
 
 
-
+def update_sales_worksheet(data):
+    """
+    Update google worksheet with user inserted data
+    """
+    print("Updating sales worksheet...\n")
+    sales_worksheet = SHEET.worksheet("sales")
+    sales_worksheet.append_row(data)
+    print("Sales worksheet updated successfully\n")
 
 
 data = get_sales_data()
+sales_data = [int(num) for num in data]
+update_sales_worksheet(sales_data)
