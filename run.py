@@ -186,9 +186,7 @@ def add_new_staff(data):
         print(f"Enter as follows: PI/Sub-I/SC\n")
         new_role = input("Role \n")
         first_new_row = []
-        first_new_row.append(new_fname)
-        first_new_row.append(new_lname)
-        first_new_row.append(new_role)
+        first_new_row.extend((new_fname, new_lname, new_role))
         second_new_row = first_new_row.copy()
         third_new_row = first_new_row.copy()
         first_new_row.append("CV")
