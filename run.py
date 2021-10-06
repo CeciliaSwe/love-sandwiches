@@ -132,5 +132,46 @@ def main():
     update_worksheet(stock_data, "stock")
 
 
-print("Welcome to Love Sandwiches Data Automation")
-main()
+#print("Welcome to Love Sandwiches Data Automation")
+#main()
+
+print("Welcome to Document Status Tracking!")
+
+def user_choice():
+    """
+    Request the user to choose between new, status and update
+    """
+    while True:
+        print("What would you like to do?\n")
+        user_input = input("Enter new/status/update: ")
+
+        if validate_user_choice(user_input):
+            print("Thank you!")
+            break
+
+    return user_input
+
+def validate_user_choice(input):
+    """
+    Inside the try, converts all string values into integers.
+    Raises ValueError if strings cannot be converted into int,
+    or if there aren't exactly 6 values.
+    """
+    try:
+        if input == "update":
+            print(f"You picked {input}")
+        elif input == "new":
+            print(f"You picked {input}")
+        elif input == "status":
+            print(f"You picked {input}")
+        else:
+            raise ValueError(
+                f"You need to pick one of the given options, try again"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
+
+user_choice()
