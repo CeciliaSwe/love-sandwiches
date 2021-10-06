@@ -204,7 +204,22 @@ def add_new_staff(data):
         print(first_new_row)
         print(second_new_row)
         print(third_new_row)
+        all_new_rows = [first_new_row, second_new_row, third_new_row]
+        print(all_new_rows)
+        return all_new_rows
+    
+def update_doc_rows(data, worksheet):
+    """
+    Receives a list of integers to be inserted into a worksheet
+    Update the relevant worksheet with the data provided
+    """
+    print(f"Updating {worksheet} worksheet...\n")
+    for row in all_new_rows:
+        worksheet_to_update = SHEET.worksheet(worksheet)
+        worksheet_to_update.append_row(row)
+    print(f"{worksheet} worksheet updated successfully\n")
 
 
 user_input = user_choice()
-add_new_staff(user_input)
+all_new_rows = add_new_staff(user_input)
+update_doc_rows(all_new_rows, "doc_tracking")
