@@ -132,10 +132,10 @@ def main():
     update_worksheet(stock_data, "stock")
 
 
-#print("Welcome to Love Sandwiches Data Automation")
-#main()
-
+# print("Welcome to Love Sandwiches Data Automation")
+# main()
 print("Welcome to Document Status Tracking!")
+
 
 def user_choice():
     """
@@ -143,7 +143,7 @@ def user_choice():
     """
     while True:
         print("What would you like to do?\n")
-        user_input = input("Enter new/status/update: ")
+        user_input = input("Enter new/status/update: \n")
 
         if validate_user_choice(user_input):
             print("Thank you!")
@@ -151,9 +151,10 @@ def user_choice():
 
     return user_input
 
+
 def validate_user_choice(input):
     """
-    Inside the try, converts all string values into integers.
+    Inside the try, run a series of if statements to check user input
     Raises ValueError if strings cannot be converted into int,
     or if there aren't exactly 6 values.
     """
@@ -166,7 +167,7 @@ def validate_user_choice(input):
             print(f"You picked {input}")
         else:
             raise ValueError(
-                f"You need to pick one of the given options, try again"
+                f"You need to pick one of the given options"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
@@ -174,4 +175,36 @@ def validate_user_choice(input):
 
     return True
 
-user_choice()
+
+def add_new_staff(data):
+    if data == "new":
+        print(f"Please enter new user name:\n")
+        new_fname = input("First name \n")
+        new_lname = input("Last name \n")
+        
+        print(f"Please enter new user role:\n")
+        print(f"Enter as follows: PI/Sub-I/SC\n")
+        new_role = input("Role \n")
+        first_new_row = []
+        first_new_row.append(new_fname)
+        first_new_row.append(new_lname)
+        first_new_row.append(new_role)
+        second_new_row = first_new_row.copy()
+        third_new_row = first_new_row.copy()
+        first_new_row.append("CV")
+        second_new_row.append("GCP Certificate")
+        
+
+        if new_role == "PI" or new_role == "Sub-I":
+                third_new_row.append("Financial Disclosure")
+                
+                
+        elif new_role == "SC":
+                third_new_row.append("IATA Certificate")
+        print(first_new_row)
+        print(second_new_row)
+        print(third_new_row)
+
+
+user_input = user_choice()
+add_new_staff(user_input)
